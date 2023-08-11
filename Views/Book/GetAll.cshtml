@@ -1,0 +1,46 @@
+﻿@model IEnumerable<PenBook.Models.Domain.Book>
+@{
+}
+
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <a class="btn btn-dark" href="/Book/Add">+ Add more</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Books</h3>
+            <table class="table table-stripped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Genre</th>
+                        <th>Isbn</th>
+                        <th>Total Pages</th>
+                        <th>Author</th>
+                        <th>Publisher</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Title</td>
+                            <td>@item.Genre.Name</td>
+                            <td>@item.Isbn</td>
+                            <td>@item.TotalPages</td>
+                            <td>@item.Author.AuthorName</td>
+                            <td>@item.Publisher.PublisherName</td>
+                            <td>
+                               <a  type="submit"  asp-action="Update" asp-route-id="@item.Id"><i class="bi bi-pen"></i></a>
+                               <a onclick="return window.confirm('Are you sure?')"asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i></a>
+                            </td>
+                        </tr>
+                    } 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<PenBook.Models.Domain.Publisher>
+@{
+}
+
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <a class="btn btn-dark" href="/Publisher/Add">Add more</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Publishers</h3>
+            <table class="table table-stripped table-bordered ">
+                <thead>
+                    <tr>
+                        <th>PublisherName</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in Model)
+                    {
+                        <tr>
+                            <td>@item.PublisherName</td>
+                            <td>
+                               <a  type="submit"  asp-action="Update" asp-route-id="@item.Id"><i class="bi bi-pen"></i></a>
+                               <a onclick="return window.confirm('Are you sure?')"asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i></a>
+                                <a  asp-action="Details" asp-route-id="@item.Id">Details </a>
+                            </td>
+                        </tr>
+                    } 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

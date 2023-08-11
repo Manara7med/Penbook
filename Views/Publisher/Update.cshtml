@@ -1,0 +1,31 @@
+﻿@model PenBook.Models.Domain.Publisher
+@{
+}
+
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Update Publisher</h3>
+            <form asp-actions="Update"method="post">
+                <input type="hidden" asp-for="Id"/>
+                <div class="form-group">
+                    <label for="PublisherName">Publisher Name *</label>
+                    <input asp-for="PublisherName" class="form-control"asp-form="PublisherName"/>
+                    <span asp-validation-for="PublisherName" class="text-danger"></span>
+                </div>
+
+                @if(TempData["msg"] != null)
+                {
+                    <div class="form-group">
+                        @TempData["msg"]
+                    </div>
+                }
+               <div class="form-group pt-3">
+                        <button type="submit" class="btn btn-dark"><i class="bi bi-save"></i> Save </button>
+                       <a asp-action="GetAll" class="btn btn-primary"><i class="bi bi-list"></i> List </a>
+               </div>
+
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿@model PenBook.Models.Domain.Publisher
+@{
+}
+
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-md-6">
+             <a class="btn btn-dark" href="/Publisher/GetAll">Go Back</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+             <h1> @Model.PublisherName </h1> 
+            <table class="table table-stripped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Genre</th>
+                        <th>Isbn</th>
+                        <th>Total Pages</th>
+                        <th>Author</th>
+                        <th>Publisher</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var B in Model.Book)
+                    {
+                        <tr>
+                            <td>@B.Title</td>
+                            <td>@B.Genre.Name</td>
+                            <td>@B.Isbn</td>
+                            <td>@B.TotalPages</td>
+                            <td>@B.Author.AuthorName</td>
+                            <td>@B.Publisher.PublisherName</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
